@@ -39,7 +39,7 @@ class searchByTag extends Command
      */
     public function handle()
     {
-        $tagInput = $this->ask('Enter a tag please');
+        $tagInput = $this->ask('Enter a tag please');   //Ask to the user a tag to enter
         
         try {   //Cheking if the given tag exist
             $tag = Tag::getTag($tagInput)->get();
