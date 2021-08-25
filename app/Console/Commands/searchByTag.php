@@ -13,7 +13,7 @@ class searchByTag extends Command
      *
      * @var string
      */
-    protected $signature = 'posts:searchByTag {tag}';
+    protected $signature = 'posts:searchByTag';
 
     /**
      * The console command description.
@@ -39,9 +39,10 @@ class searchByTag extends Command
      */
     public function handle()
     {
+        $tagInput = $this->ask('Enter a tag please');
         
         try {   //Cheking if the given tag exist
-            $tag = Tag::getTag($this->argument('tag'))->get();
+            $tag = Tag::getTag($tagInput)->get();
 
             if ($tag[0]) {  //If the tag is correct, processing the request
                 $posts = Post::getRelatedPosts($tag[0]->id)->get();
