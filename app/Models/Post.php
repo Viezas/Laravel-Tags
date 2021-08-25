@@ -15,8 +15,8 @@ class Post extends Model
         'tag_id',
     ];
 
-    public function tag()
+    public function scopeGetRelatedPosts($query, $tag_id)
     {
-        return $this->belongsTo(Tag::class);
+        return $query->where('tag_id', $tag_id);
     }
 }

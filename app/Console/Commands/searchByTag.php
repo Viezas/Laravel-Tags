@@ -41,10 +41,10 @@ class searchByTag extends Command
     {
         
         try {   //Cheking if the given tag exist
-            $tag = Tag::where('tag', $this->argument('tag'))->get();
+            $tag = Tag::getTag($this->argument('tag'))->get();
 
             if ($tag[0]) {  //If the tag is correct, processing the request
-                $posts = Post::where('tag_id', $tag[0]->id)->get();
+                $posts = Post::getRelatedPosts($tag[0]->id)->get();
                 if(count($posts) == 0)  //If the tag is correct but there is no post, display a message and exit
                 {
                     echo "There is no post yet for this tag !";

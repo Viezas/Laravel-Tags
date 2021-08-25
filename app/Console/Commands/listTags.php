@@ -38,7 +38,7 @@ class listTags extends Command
      */
     public function handle()
     {
-        $tags = Tag::get(); //Fetching all tags from the db
+        $tags = Tag::all(); //Fetching all tags from the db
         foreach ($tags as $tag) {   //Showing all tags
             echo "- ".$tag->tag."\n";
         }

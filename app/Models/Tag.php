@@ -13,8 +13,8 @@ class Tag extends Model
         'name',
     ];
 
-    public function post()
+    public function scopeGetTag($query, $tag)
     {
-        return $this->belongsTo(Post::class);
+        return $query->where('tag', $tag);
     }
 }
